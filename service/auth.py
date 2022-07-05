@@ -7,6 +7,7 @@ import jwt
 
 from service.user import UserService
 
+
 class AuthService:
     def __init__(self, user_service: UserService):
         self.user_service = user_service
@@ -19,11 +20,11 @@ class AuthService:
 
         if not is_refresh:
             if not self.user_service.compare_passwords(password, user.password):
-                 return False
+                return False
 
         data = {
-            "username" : user.username,
-            "role" : user.role
+            "username": user.username,
+            "role": user.role
         }
 
         # access token on 30 min
@@ -49,4 +50,4 @@ class AuthService:
         expired = data['exp']
         if now > expired:
             return False
-        return self. gererate_tokens(username, user.password, is_refresh=True)
+        return self.gererate_tokens(username, user.password, is_refresh=True)

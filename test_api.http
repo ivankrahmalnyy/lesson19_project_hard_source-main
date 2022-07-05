@@ -146,6 +146,6 @@ Accept: application/json
 Content-Type: application/json
 
 {
-"username": "test",
+  "username": "test",
   "password": "test"
 }

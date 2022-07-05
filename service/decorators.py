@@ -37,4 +37,4 @@ def admin_requered(func):
 
         abort(401)
 
-    return wrapper()
+    return wrapper
