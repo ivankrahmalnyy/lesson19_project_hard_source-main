@@ -17,15 +17,16 @@ def auth_requered(func):
             print(f"JWT decode error: {e}")
             abort(401)
         return func(*args, **kwargs)
+
     return wrapper()
 
 
 def admin_requered(func):
     def wrapper(*args, **kwargs):
-        if "Autorization" in request.headers:
+        if not "Authorization" in request.headers:
             abort(401)
 
-        token = request.headers["Autorization"]
+        token = request.headers["Authorization"]
         try:
             data = jwt.decode(token, JWT_SECRET, algoritms=[JWT_ALG])
         except Exception as e:
@@ -35,6 +36,6 @@ def admin_requered(func):
             if data["role"] == "admin":
                 return func(*args, **kwargs)
 
-        abort(401)
+        abort(403)
 
     return wrapper

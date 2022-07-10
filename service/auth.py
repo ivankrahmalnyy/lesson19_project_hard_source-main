@@ -29,12 +29,12 @@ class AuthService:
 
         # access token on 30 min
         min30 = datetime.datetime.utcnow() + datetime.timedelta(minutes=30)
-        data["exp"] = calendar.timegm(min30.timetuple)
+        data["exp"] = calendar.timegm(min30.timetuple())
         access_token = jwt.encode(data, JWT_SECRET, algorithm=JWT_ALG)
 
         # refresh token 30 days
         day30 = datetime.datetime.utcnow() + datetime.timedelta(days=30)
-        data["exp"] = calendar.timegm(day30.timetuple)
+        data["exp"] = calendar.timegm(day30.timetuple())
         refresh_token = jwt.encode(data, JWT_SECRET, algorithm=JWT_ALG)
 
         return {"access_token": access_token, "refresh_token": refresh_token}
@@ -46,8 +46,8 @@ class AuthService:
 
         if not user:
             return False
-        now = calendar.timegm(datetime.datetime.utcnow().timenow())
-        expired = data['exp']
-        if now > expired:
-            return False
+        # now = calendar.timegm(datetime.datetime.utcnow().timetuple())
+        # expired = data['exp']
+        # if now > expired:
+        #     return False
         return self.gererate_tokens(username, user.password, is_refresh=True)

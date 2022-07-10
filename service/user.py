@@ -42,4 +42,4 @@ class UserService:
         string_hash_1 = password_hash
         string_hash_2 = self.get_password_hash(password)
         print(string_hash_1, string_hash_2)
-        hmac.compare_digest(base64.b64encode(password_hash), base64.b64encode(self.get_password_hash(password)))
+        return hmac.compare_digest(base64.b64encode(password_hash), base64.b64encode(self.get_password_hash(password)))

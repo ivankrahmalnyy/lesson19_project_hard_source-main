@@ -1,6 +1,6 @@
 GET http://127.0.0.1:10001/movies/
 Accept: application/json
-
+Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNjU3NDQxNTk5fQ.bIV3WnFvGjCyguyroeK1KK9oDyrbKWrnKLqrsEPt_JA
 ###
 
 GET http://127.0.0.1:10001/movies/?director_id=12
@@ -46,6 +46,7 @@ Accept: application/json
 POST http://127.0.0.1:10001/movies/
 Accept: application/json
 Content-Type: application/json
+Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNjU3NDQxNTk5fQ.bIV3WnFvGjCyguyroeK1KK9oDyrbKWrnKLqrsEPt_JA
 
 {
   "title": "Гарри Поттер мой кумир!",
@@ -134,9 +135,9 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "username": "test",
-  "password": "test",
-  "role": "test"
+  "username": "admin",
+  "password": "123456789asdf",
+  "role": "admin"
 
 }
 
@@ -146,6 +147,15 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "username": "test",
-  "password": "test"
+  "username": "admin",
+  "password": "123456789asdf"
+}
+
+###
+PUT http://127.0.0.1:10001/auth/
+Accept: application/json
+Content-Type: application/json
+
+{
+  "refresh_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJyb2xlIjoidGVzdCIsImV4cCI6MTY1OTYzMzI4M30.5NhAA7TFQlprWhlkpkUrcJNv4Dsgj4g5p2yZCwZT0CI"
 }

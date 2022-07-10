@@ -22,6 +22,7 @@ class MoviesView(Resource):
         all_movies = movie_service.get_all(filters)
         res = MovieSchema(many=True).dump(all_movies)
         return res, 200
+
     @admin_requered
     def post(self):
         req_json = request.json
@@ -35,6 +36,7 @@ class MovieView(Resource):
         b = movie_service.get_one(bid)
         sm_d = MovieSchema().dump(b)
         return sm_d, 200
+
     @admin_requered
     def put(self, bid):
         req_json = request.json
@@ -42,6 +44,7 @@ class MovieView(Resource):
             req_json["id"] = bid
         movie_service.update(req_json)
         return "", 204
+
     @admin_requered
     def delete(self, bid):
         movie_service.delete(bid)

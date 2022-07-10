@@ -1,4 +1,7 @@
 from dao.genre import GenreDAO
+from service.decorators import admin_requered
+
+
 
 
 class GenreService:
